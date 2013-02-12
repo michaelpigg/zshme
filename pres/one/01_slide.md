@@ -6,6 +6,7 @@
 
 * no 'cd' required
 * file completions
+* searching history
 * autocorrect
 * globbing
 
