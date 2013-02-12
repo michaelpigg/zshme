@@ -1,0 +1,4 @@
+zshme
+=====
+
+intro to zsh
