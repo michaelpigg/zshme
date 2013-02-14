@@ -15,3 +15,7 @@
 
 !SLIDE
 # oh-my-zsh #
+
+!SLIDE
+# Unexpected Features #
+*  find . -name *.pdf
