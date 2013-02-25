@@ -174,18 +174,34 @@ Suppose you've checked out Apache Felix
 !SLIDE
 command history
 
-!SLIDE
-command correction
+!SLIDE commandline incremental
+# command correction #
+$ mnv clean install
+zsh: correct 'mnv' to 'mvn' [nyae]?
 
 !SLIDE
-globbing
+# globbing #
+* recursive globbing
 
-!SLIDE
-# oh-my-zsh #
+!SLIDE commandline incremental
+# find all poms #
+    $ ls **/pom.xml
+
+!SLIDE commandline incremental
+# find all poms with snapshot versions #
+    $ find . grep -SNAPSHOT {} \;
 
 !SLIDE
 # Unexpected Features #
-*  find . -name *.pdf
+    $ find . -name *.pdf
+    zsh: no matches found: *.pdf
+
+    $ find . -name "*.pdf"
+    foo/bar.pdf
+    baz/quz.pdf
+
+!SLIDE
+# oh-my-zsh #
 
 !SLIDE
 Resources
