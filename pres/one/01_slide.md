@@ -30,6 +30,54 @@ Chariot Day 2013
 ** turn on autocd
 ** turn on appendhistory
 
+!SLIDE smaller incremental
+# first login #
+    @@@
+    This is the Z Shell configuration function for new users,
+    zsh-newuser-install.
+    You are seeing this message because you have no zsh startup files
+    (the files .zshenv, .zprofile, .zshrc, .zlogin in the directory
+    ~).  This function can help you with a few settings that should
+    make your use of the shell easier.
+
+    You can:
+
+    (q)  Quit and do nothing.  The function will be run again next time.
+
+    (0)  Exit, creating the file ~/.zshrc containing just a comment.
+         That will prevent this function being run again.
+
+    (1)  Continue to the main menu.
+
+    --- Type one of the keys in parentheses --- 
+
+* Don't Panic!
+* type q
+
+!SLIDE smaller skip
+# first login #
+    @@@
+    Please pick one of the following options:
+
+    (1)  Configure settings for history, i.e. command lines remembered
+         and saved by the shell.  (Recommended.)
+
+    (2)  Configure the new completion system.  (Recommended.)
+
+    (3)  Configure how keys behave when editing command lines.  (Recommended.)
+
+    (4)  Pick some of the more common shell options.  These are simple "on"
+         or "off" switches controlling the shell's features.  
+
+    (0)  Exit, creating a blank ~/.zshrc file.
+
+    (a)  Abort all settings and start from scratch.  Note this will overwrite
+         any settings from zsh-newuser-install already in the startup file.
+         It will not alter any of your other settings, however.
+
+    (q)  Quit and do nothing else.  The function will be run again next time.
+    --- Type one of the keys in parentheses --- 
+
 !SLIDE
 # Cool Features #
 
@@ -150,9 +198,11 @@ Suppose you've checked out Apache Felix
 
 !SLIDE commandline
 # autocd power #
-	$ cdpath=(~/src/felix)
+	
+    $ cdpath=(~/src/felix)
 	~/src/felix
-	$ upnp
+	
+    $ upnp
 	~/src/felix/upnp
 
 	hack, hack, hackey, hack
@@ -164,35 +214,91 @@ Suppose you've checked out Apache Felix
 
 !SLIDE commandline incremental
 # autocd completion #
-	$ http/<tab key>
+	
+    $ http/<tab key>
 	api/         bridge/      cometd/      proxy/       whiteboard/  
 	base/        bundle/      jetty/       samples/     
 
 	$ http/b<tab key>
 	base/    bridge/  bundle/
 
+!SLIDE incremental
+# command history #
+
+* share history between sessions
+
+    @@@ sh
+    setopt share_history
+
+* append history
+
+    @@@ sh
+    setopt append_history
+
 !SLIDE
-command history
+# matching in command history #
+    @@@ sh
+    bindkey '^[[A' up-line-or-search
+    bindkey '^[[B' down-line-or-search
+
+!SLIDE commandline incremental
+# (a)typical day #
+    $ mvn clean install
+    [Build Failed]
+
+     hack, hack, hackey, hack
+
+    $ mvn clean install -DskipTest=true
+    [Build Successful]
+    $ git commit -m "Awesome code"
+    $ git push
+
+    Did I just break the build?
+
+    $ mvn<up arrow>
+    $ mvn clean install -DskipTest=true<up arrow>
+    $ mvn clean install<enter>
+    [Build Successful]
+
+    Phew!
 
 !SLIDE commandline incremental
 # command correction #
-$ mnv clean install
-zsh: correct 'mnv' to 'mvn' [nyae]?
+    $ mnv clean install
+    zsh: correct 'mnv' to 'mvn' [nyae]?
 
 !SLIDE
 # globbing #
 * recursive globbing
 
 !SLIDE commandline incremental
-# find all poms #
+
+# find all poms in #
+
+~/src/felix/gogo
+
     $ ls **/pom.xml
+    command/pom.xml     pom.xml         shell/pom.xml
+    gogo-parent/pom.xml runtime/pom.xml
 
 !SLIDE commandline incremental
-# find all poms with snapshot versions #
-    $ find . grep -SNAPSHOT {} \;
 
-!SLIDE
+# find poms with snapshot versions #
+
+~/src/felix/gogo
+
+    $ grep SNAPSHOT **/pom.xml
+
+    command/pom.xml:  <version>0.9.0-SNAPSHOT</version>
+    gogo-parent/pom.xml:    <version>0.7.0-SNAPSHOT</version>
+    pom.xml:    <version>0.7.0-SNAPSHOT</version>
+    runtime/pom.xml:    <version>0.9.0-SNAPSHOT</version>
+    shell/pom.xml:    <version>0.9.0-SNAPSHOT</version></version>
+
+!SLIDE commandline incremental skip
+
 # Unexpected Features #
+
     $ find . -name *.pdf
     zsh: no matches found: *.pdf
 
@@ -201,7 +307,16 @@ zsh: correct 'mnv' to 'mvn' [nyae]?
     baz/quz.pdf
 
 !SLIDE
+
 # oh-my-zsh #
+
+Quick, easy installation with good defaults
+
+* plugins system
+    * git 
+    * mvn
+    * etc (https://github.com/robbyrussell/oh-my-zsh/tree/master/plugins)
+* themes
 
 !SLIDE
 Resources
