@@ -306,6 +306,29 @@ Suppose you've checked out Apache Felix
     foo/bar.pdf
     baz/quz.pdf
 
+!SLIDE commandline incremental
+
+# typical command completion #
+
+    $ java<tab>
+    java         java2groovy  javac        javadoc      javah        javap        javaws 
+
+!SLIDE commandline incremental
+
+# fancy command completion #
+
+    $ java<tab><tab>
+    TODO: show result
+
+!SLIDE
+
+# awesome command completion #
+    $ brew install zsh-completions
+
+    $ mvn clean install -pl<tab><tab>
+
+    try this on a project with nested child projects
+
 !SLIDE
 
 # oh-my-zsh #
